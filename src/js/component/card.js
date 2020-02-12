@@ -60,3 +60,14 @@ class Card extends Component {
 }
 
 export default Card;
+
+onClick="document.getElementById('close').style.display='none'">
+
+document.getElementById("close").addEventListener(
+	"click",
+	function(e) {
+		e.preventDefault();
+		this.removeChild(remove).style.display = "none";
+	},
+	false
+);
