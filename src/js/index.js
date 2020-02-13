@@ -13,12 +13,3 @@ import { Home } from "./component/home.js";
 
 //render your react application
 ReactDOM.render(<Home />, document.querySelector("#app"));
-
-Document.getElementByName("close").addEventListener(
-	"click",
-	function(e) {
-		e.preventDefault();
-		this.parentNode.style.display = "none";
-	},
-	false
-);

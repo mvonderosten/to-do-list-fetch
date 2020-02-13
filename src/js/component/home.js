@@ -9,11 +9,12 @@ import { Header } from "../component/header";
 export function Home() {
 	const [list, setlist] = useState([]);
 	const [content, setContent] = useState();
+	const [remove, setRemove] = useState("");
 
 	return (
 		<>
 			<Header />
-			<div className="text-center mt-5">
+			<div className="text-center">
 				<input
 					value={content}
 					onChange={e => setContent(e.target.value)}
@@ -24,22 +25,18 @@ export function Home() {
 						}
 					}}
 				/>
-				<div id="close">
-					{list.map((item, index) => {
-						return (
-							<div key={index}>
-								<button
-									className="close"
-									onClick="document.getElementById('close').style.display='none'">
-									x
-								</button>
-								<span id="remove">
-									{"I need to "} {item}
-								</span>
-							</div>
-						);
-					})}
-				</div>
+
+				{list.map((item, index) => {
+					return (
+						<div
+							key={index}
+							onClick={() =>
+								setlist(list.filter(e => e !== item))
+							}>
+							{item}
+						</div>
+					);
+				})}
 			</div>
 		</>
 	);
