@@ -33,7 +33,7 @@ export function Home() {
 							onClick={() =>
 								setlist(list.filter(e => e !== item))
 							}>
-							{item}
+							<button className="button-close">{item}</button>
 						</div>
 					);
 				})}
