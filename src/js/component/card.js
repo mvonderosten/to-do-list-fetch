@@ -1,73 +1,42 @@
-import React, { Component } from "react";
-import { Items } from "../component/items";
+import React, { useState } from "react";
 
-class Card extends Component {
-	constructor(props) {
-		super(props);
+export function Card() {
+	const [list, setlist] = useState([]);
+	const [content, setContent] = useState();
+	const [remove, setRemove] = useState("");
 
-		this.state = {
-			items: []
-		};
+	return (
+		<div className="card">
+			<div className="card-body">
+				<div className="text-center">
+					<input
+						value={content}
+						onChange={e => setContent(e.target.value)}
+						onKeyPress={e => {
+							if (e.key === "Enter") {
+								setlist(list.concat(content));
+								setContent("");
+							}
+						}}
+					/>
 
-		this.addItem = this.addItem.bind(this);
-	}
-
-	addItem(e) {
-		if (this._inputElement.value !== "") {
-			var newItem = {
-				text: this._inputElement.value,
-				key: Date.now()
-			};
-
-			this.setState(prevState => {
-				return {
-					items: prevState.items.concat(newItem)
-				};
-			});
-
-			this._inputElement.value = "";
-		}
-
-		console.log(this.state.items);
-
-		e.preventDefault();
-	}
-
-	render() {
-		return (
-			<div className="card">
-				<div className="card-body">
-					<form onSubmit={this.addItem}>
-						<input
-							ref={a => (this._inputElement = a)}
-							placeholder="enter task"
-						/>
-						<div className="form-group">
-							<label htmlFor="formGroupExampleInput" />
-							<input
-								type="text"
-								className="form-control"
-								id="formGroupExampleInput"
-								placeholder="What Tasks Do I Have?"
-							/>
-						</div>
-					</form>
+					{list.map((item, index) => {
+						return (
+							<div
+								key={index}
+								onClick={() =>
+									setlist(list.filter(e => e !== item))
+								}>
+								<ul>
+									<li>
+										{"I need to "} {item}
+									</li>
+								</ul>
+							</div>
+						);
+					})}
 				</div>
-				<Items entries={this.state.items} />
 			</div>
-		);
-	}
+		</div>
+	);
 }
-
-export default Card;
-
-onClick="document.getElementById('close').style.display='none'">
-
-document.getElementById("close").addEventListener(
-	"click",
-	function(e) {
-		e.preventDefault();
-		this.removeChild(remove).style.display = "none";
-	},
-	false
-);

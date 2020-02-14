@@ -12,14 +12,37 @@
 
 */
 
-.close {
+.button-close {
   cursor: pointer;
   position: relative;
-    right: 30px;
+    left: 50px;
  
 }
 
 body {
 
     background-color: #e8ecef;
+
+    
+}
+
+.card {
+width: 500px;
+height: auto;
+  
+  border: 5px solid gray;
+  margin: auto;
+  font-family: 'Courier New', Courier, monospace;
+
+}
+
+h1 {
+
+font-family: 'Courier New', Courier, monospace;
+font-weight: bold;
+font-size: 50px;
+text-align: center;
+padding-top: 20px;
+padding-bottom: 25px;
+
 }
