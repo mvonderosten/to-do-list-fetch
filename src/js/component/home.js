@@ -73,7 +73,7 @@ export function Home() {
 								<div
 									key={index}
 									onClick={() =>
-										setlist(list.filter(e => e !== item))
+										saveToDo(list.filter(e => e !== item))
 									}>
 									<Card one={item.label} two={item.done} />
 								</div>
